@@ -5,7 +5,7 @@ const { graphqlHTTP } = require('express-graphql');
 
 const mongoose = require('mongoose');
 
-const schema = require('./schema/schema');
+const schema = require('./server/schema/schema');
 
 const port = process.env.PORT || 4000;
 
@@ -16,11 +16,12 @@ app.use('/graphql', graphqlHTTP({
     schema: schema,
 }));
 
-mongoose.connect(
-    `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoPassword}@cluster0.vfaapia.mongodb.net/${process.env.mongoDatabase}?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-).then(() => {
+const dbUrl = `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoPassword}@cluster0.vfaapia.mongodb.net/${process.env.mongoDatabase}?retryWrites=true&w=majority`
+
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
     app.listen(port, () => console.log(`Listening on port ${port}!`));
-}).catch(err => console.log(err));
+})
+    .catch(err => console.log(err));
 
 
