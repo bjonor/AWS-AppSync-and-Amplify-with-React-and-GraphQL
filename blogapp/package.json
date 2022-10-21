@@ -4,16 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build & next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^1.2.26",
     "aws-amplify": "^4.3.39",
+    "moment": "^2.29.4",
+    "momento": "^0.2.0",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.3",
+    "react-simplemde-editor": "^5.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
